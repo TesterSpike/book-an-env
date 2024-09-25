@@ -1,0 +1,60 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: lightcoral;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+h1 {
+  justify-content: center;
+}
+
+.Content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.Menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-items: left;
+  background-color: aliceblue;
+}
+
+.EnvironmentTable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Row {
+  outline: darkblue 2px solid;
+}
+
+.RowItem {
+  outline: lightblue 1px solid;
+  gap: 1px;
+}
+
+.Booked {
+  background-color: lightpink;
+}
+
+.Locked {
+  background-color: lightsalmon;
+}
+
+.Unlocked {
+  background-color: lightseagreen;
+}
