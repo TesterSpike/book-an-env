@@ -58,3 +58,15 @@ h1 {
 .Unlocked {
   background-color: lightseagreen;
 }
+
+.PopupTrigger {
+  font-size: small;
+  vertical-align: super;
+  background-color: lightgrey;
+}
+
+.Popup {
+  background-color: lightgrey;
+  border: 1px solid grey;
+  padding: 1px 2px;
+}

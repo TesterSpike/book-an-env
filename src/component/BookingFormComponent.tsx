@@ -1,4 +1,4 @@
-const bookingFormComponent = () => (
+const BookingFormComponent = () => (
     <form action="/booking" className={"Form"}>
         <div className={"FormInputSection"}>
             <label className={"FormLabel"} htmlFor='Environment'>Environment: </label>
@@ -45,4 +45,4 @@ const bookingFormComponent = () => (
     </form>
 )
 
-export default bookingFormComponent;
+export default BookingFormComponent;

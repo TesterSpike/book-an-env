@@ -1,6 +1,6 @@
 import {FrontendUrl} from "../types/frontendUrl";
 
-const frontEndUrlComponent = (frontendUrls: FrontendUrl[]) => {
+const FrontendUrlComponent = (frontendUrls: FrontendUrl[]) => {
     return frontendUrls.map((frontEnd) => {
         return (
             <li key={frontEnd.feName}><a href={frontEnd.url}>{frontEnd.feName}</a></li>
@@ -8,4 +8,4 @@ const frontEndUrlComponent = (frontendUrls: FrontendUrl[]) => {
     });
 }
 
-export default frontEndUrlComponent;
+export default FrontendUrlComponent;

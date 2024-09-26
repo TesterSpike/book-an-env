@@ -1,16 +1,18 @@
 import {EnvironmentData} from "../types/environmentData";
-import frontendUrlComponent from "./frontendUrlComponent";
+import FrontendUrlComponent from "./FrontendUrlComponent";
+import {Button, Popup} from 'semantic-ui-react'
 
-const environmentStatusComponent = (rows: EnvironmentData[]) => {
+const EnvironmentTableRowComponent = (rows: EnvironmentData[]) => {
     return rows.map((row) => {
         const bookingData = row.bookingData;
         const shareable = (row.bookingData?.shareable) ? 'Unlocked RowItem' : 'Locked RowItem';
         const booked = (bookingData) ? 'Booked Row': 'Row'
         return (
             <tr className={booked} key={row.env}>
-                <td className={"RowItem"}>{row.env}</td>
+              <td className={"RowItem"}>{row.env} <Popup className={"Popup"} content={ row.detail } trigger={<span className={"PopupTrigger"}>{(row.detail !== '')? '?' : ''}</span>}/>
+              </td>
                 <td className={"RowItem"}>
-                    <ul>{frontendUrlComponent(row.metadata.frontendUrls)}</ul>
+                    <ul>{FrontendUrlComponent(row.metadata.frontendUrls)}</ul>
                 </td>
                 <td className={"RowItem"}><a href={row.metadata.configManagerUrl.url}>{row.metadata.configManagerUrl.cmName}</a></td>
                 <td className={"RowItem"}>{(bookingData) ? bookingData.bookedBy : ''}</td>
@@ -19,10 +21,10 @@ const environmentStatusComponent = (rows: EnvironmentData[]) => {
                 <td className={"RowItem"}>{(bookingData) ? bookingData.untilTime : ''}</td>
                 <td className={(bookingData)? shareable: 'RowItem'}>{(bookingData) ? 'Yes' : ''}</td>
                 <td className={"RowItem"}>{(bookingData) ? bookingData.notes : ''}</td>
-                <td className={"RowItem"}>{(bookingData) ? <button>Unbook</button> : ''}</td>
+                <td className={"RowItem"}>{(bookingData) ? <Button>Release</Button> : ''}</td>
             </tr>
         )
     });
 }
 
-export default environmentStatusComponent;
+export default EnvironmentTableRowComponent;

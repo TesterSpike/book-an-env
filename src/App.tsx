@@ -1,140 +1,149 @@
 import './css/App.css';
-import environmentStatusComponent from "./component/environmentStatusComponent";
 import {EnvironmentData} from "./types/environmentData";
+import {Button} from 'semantic-ui-react';
+import environmentTableComponent from './component/EnvironmentTableComponent';
 
 const rows: EnvironmentData[] = [
-    {
-        env: "TST1",
-        metadata: {
-            frontendUrls: [
-                {
-                    feName: "FE1",
-                    url: "https://localhost:8080"
-                },
-                {
-                    feName: "FE2",
-                    url: "https://localhost:8080"
-                }
-            ],
-            configManagerUrl: {
-                cmName: "CM1",
-                url: "https://localhost:8080"
-            }
-        }
-    },
-    {
-        env: "TST2",
-        metadata: {
-            frontendUrls: [{
-                feName: "FE1",
-                url: "https://localhost:8080"
-            }],
-            configManagerUrl: {
-                cmName: "CM1",
-                url: "https://localhost:8080"
-            }
-        }
-    },
-    {
-        env: "TST3",
-        metadata: {
-            frontendUrls: [{
-                feName: "FE1",
-                url: "https://localhost:8080"
-            }],
-            configManagerUrl: {
-                cmName: "CM2",
-                url: "https://localhost:8080"
-            }
-        }
-    },
-    {
-        env: "TST4",
-        metadata: {
-            frontendUrls: [{
-                feName: "FE1",
-                url: "https://localhost:8080"
-            }],
-            configManagerUrl: {
-                cmName: "CM3",
-                url: "https://localhost:8080"
-            }
-        }
-    },
-    {
-        env: "TST5",
-        metadata: {
-            frontendUrls: [{
-                feName: "FE1",
-                url: "https://localhost:8080"
-            }],
-            configManagerUrl: {
-                cmName: "CM1",
-                url: "https://localhost:8080"
-            }
-        }
-    },
-    {
-        env: "TST6",
-        metadata: {
-            frontendUrls: [{
-                feName: "FE1",
-                url: "https://localhost:8080"
-            }],
-            configManagerUrl: {
-                cmName: "CM2",
-                url: "https://localhost:8080"
-            }
+  {
+    env: "TST1",
+    detail: "Some random text",
+    metadata: {
+      frontendUrls: [
+        {
+          feName: "FE1",
+          url: "https://localhost:8080"
         },
-        bookingData: {
-            bookedBy: "user1",
-            bookingDate: "2024-09-01",
-            untilTime: "6:00:00",
-            shareable: true,
-            notes: "temporarily shareable"
+        {
+          feName: "FE2",
+          url: "https://localhost:8080"
         }
-    },
-    {
-        env: "TST7",
-        metadata: {
-            frontendUrls: [{
-                feName: "FE1",
-                url: "https://localhost:8080"
-            }],
-            configManagerUrl: {
-                cmName: "CM1",
-                url: "https://localhost:8080"
-            }
-        }
-    },
-    {
-        env: "TST8",
-        metadata: {
-            frontendUrls: [{
-                feName: "FE1",
-                url: "https://localhost:8080"
-            }],
-            configManagerUrl: {
-                cmName: "CM3",
-                url: "https://localhost:8080"
-            }
-        }
-    },
-    {
-        env: "TST9",
-        metadata: {
-            frontendUrls: [{
-                feName: "FE1",
-                url: "https://localhost:8080"
-            }],
-            configManagerUrl: {
-                cmName: "CM3",
-                url: "https://localhost:8080"
-            }
-        }
+      ],
+      configManagerUrl: {
+        cmName: "CM1",
+        url: "https://localhost:8080"
+      }
     }
+  },
+  {
+    env: "TST2",
+    detail: "",
+    metadata: {
+      frontendUrls: [{
+        feName: "FE1",
+        url: "https://localhost:8080"
+      }],
+      configManagerUrl: {
+        cmName: "CM1",
+        url: "https://localhost:8080"
+      }
+    }
+  },
+  {
+    env: "TST3",
+    detail: "Some random text",
+    metadata: {
+      frontendUrls: [{
+        feName: "FE1",
+        url: "https://localhost:8080"
+      }],
+      configManagerUrl: {
+        cmName: "CM2",
+        url: "https://localhost:8080"
+      }
+    }
+  },
+  {
+    env: "TST4",
+    detail: "Some random text",
+    metadata: {
+      frontendUrls: [{
+        feName: "FE1",
+        url: "https://localhost:8080"
+      }],
+      configManagerUrl: {
+        cmName: "CM3",
+        url: "https://localhost:8080"
+      }
+    }
+  },
+  {
+    env: "TST5",
+    detail: "Some random text",
+    metadata: {
+      frontendUrls: [{
+        feName: "FE1",
+        url: "https://localhost:8080"
+      }],
+      configManagerUrl: {
+        cmName: "CM1",
+        url: "https://localhost:8080"
+      }
+    }
+  },
+  {
+    env: "TST6",
+    detail: "Some random text",
+    metadata: {
+      frontendUrls: [{
+        feName: "FE1",
+        url: "https://localhost:8080"
+      }],
+      configManagerUrl: {
+        cmName: "CM2",
+        url: "https://localhost:8080"
+      }
+    },
+    bookingData: {
+      bookedBy: "user1",
+      bookingDate: "2024-09-01",
+      untilTime: "6:00:00",
+      shareable: true,
+      notes: "temporarily shareable"
+    }
+  },
+  {
+    env: "TST7", detail: "Some random text",
+    metadata: {
+      frontendUrls: [{
+        feName: "FE1",
+        url: "https://localhost:8080"
+      }],
+      configManagerUrl: {
+        cmName: "CM1",
+        url: "https://localhost:8080"
+      }
+    }
+  },
+  {
+    env: "TST8", detail: "Some random text",
+    metadata: {
+      frontendUrls: [{
+        feName: "FE1",
+        url: "https://localhost:8080"
+      }],
+      configManagerUrl: {
+        cmName: "CM3",
+        url: "https://localhost:8080"
+      }
+    }
+  },
+  {
+    env: "TST9", detail: "Some random text",
+    metadata: {
+      frontendUrls: [{
+        feName: "FE1",
+        url: "https://localhost:8080"
+      }],
+      configManagerUrl: {
+        cmName: "CM3",
+        url: "https://localhost:8080"
+      }
+    }
+  }
 ];
 
+
+export
 function App() {
     return (
         <div className="App">
@@ -145,11 +154,11 @@ function App() {
                 <menu className={"Menu"}>
                     <h3>Menu</h3>
                     <div className={"MenuSection"}>
-                        <button className="MenuButton" onClick={alert}>Book Environment</button>
+                        <Button className="MenuButton" onClick={alert}>Book Environment</Button>
                     </div>
                 </menu>
                 <div className="EnvironmentTable">
-                    {environmentStatusComponent(rows)}
+                    {environmentTableComponent(rows)}
                 </div>
             </div>
         </div>

@@ -5,6 +5,7 @@ export async function seed() {
         .createTable('environments')
         .ifNotExists()
         .addColumn('name', 'varchar(255)', (cb) => cb.primaryKey())
+        .addColumn('detail', 'varchar(255)', (cb) => cb.defaultTo(''))
         .execute()
     console.log(`Created "environments" table`)
 
