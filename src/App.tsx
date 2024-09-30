@@ -1,7 +1,7 @@
 import './css/App.css';
 import {EnvironmentData} from "./types/environmentData";
-import {Button} from 'semantic-ui-react';
 import environmentTableComponent from './component/EnvironmentTableComponent';
+import React from "react";
 
 const rows: EnvironmentData[] = [
   {
@@ -142,25 +142,23 @@ const rows: EnvironmentData[] = [
   }
 ];
 
-
-export
-function App() {
+export function App() {
     return (
         <div className="App">
-            <header className="App-header">
-                Book an environment!
-            </header>
-            <div className={"Content"}>
-                <menu className={"Menu"}>
-                    <h3>Menu</h3>
-                    <div className={"MenuSection"}>
-                        <Button className="MenuButton" onClick={alert}>Book Environment</Button>
-                    </div>
-                </menu>
-                <div className="EnvironmentTable">
-                    {environmentTableComponent(rows)}
-                </div>
+          <header className="App-header">
+            Book an environment!
+          </header>
+          <div className={"Content"}>
+            <menu className={"Menu"}>
+              <h3>Menu</h3>
+              <div className={"MenuSection"}>
+                <button id='open-booking-form'>Book Environment</button>
+              </div>
+            </menu>
+            <div className="EnvironmentTable">
+              {environmentTableComponent(rows)}
             </div>
+          </div>
         </div>
     );
 }
