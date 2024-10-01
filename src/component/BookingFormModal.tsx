@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import ModalDialog from "./ModalDialog";
 
-interface BookingFormModalData {
+export interface BookingFormModalData {
     environmentName: string;
     bookedFor: string;
     office: string;
