@@ -29,7 +29,7 @@ interface BookingFormModalProps {
 const BookingFormModal: React.FC<BookingFormModalProps> = ({isOpen, onClose, onSubmit}) => {
     const focusInputRef = useRef<HTMLInputElement | null>(null);
 
-    const [formState, setFormState] = useState<BookingFormModalData>({initialBookingFormModalData});
+    const [formState, setFormState] = useState<BookingFormModalData>(initialBookingFormModalData);
 
     useEffect(() => {
         if (isOpen && focusInputRef.current) {
@@ -52,7 +52,7 @@ const BookingFormModal: React.FC<BookingFormModalProps> = ({isOpen, onClose, onS
     const handleSubmit = (event: React.FormEvent): void => {
         event.preventDefault();
         onSubmit(formState);
-        setFormState({initialBookingFormModalData});
+        setFormState(initialBookingFormModalData);
     };
 
     return (
