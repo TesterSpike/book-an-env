@@ -81,3 +81,34 @@ h1 {
   background: lightgreen;
   color: darkgreen;
 }
+
+.Form {
+  flex: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  gap: 5px;
+  border: 1px solid darkseagreen;
+  background: lightseagreen;
+}
+
+.FormLabel {
+  align-self: flex-start;
+}
+
+.FormInput {
+  align-self: flex-start;
+}
+
+.FormButton {
+  align-self: center;
+}
+
+.modal-close-btn {
+  align-self: flex-end;
+}
+
+.modal-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}

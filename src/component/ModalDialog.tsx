@@ -41,9 +41,9 @@ const ModalDialog: React.FC<ModalDialogProps> = ({isOpen, hasCloseBtn = true, on
     }, [isModalOpen]);
 
     return (
-        <dialog ref={modalDialogRef} onKeyDown={handleKeyDown}>
+        <dialog className= 'modal-dialog' ref={modalDialogRef} onKeyDown={handleKeyDown}>
             {hasCloseBtn && (
-                <button className="modal-close-btn" onClick={handleCloseModal}>
+                <button className='modal-close-btn' onClick={handleCloseModal}>
                     Close
                 </button>
             )}

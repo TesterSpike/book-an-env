@@ -6,16 +6,20 @@ export interface BookingFormModalData {
     bookedFor: string;
     office: string;
     bookingDate: string;
-    isShareable: boolean;
+    isShareable: string;
     notes: string;
+}
+
+function formatDate(_date: Date): string {
+    return `${_date.getFullYear()}-${(_date.getMonth() + 1).toString().padStart(2, '0')}-${(_date.getDate()).toString().padStart(2, '0')}`
 }
 
 const initialBookingFormModalData: BookingFormModalData = {
     environmentName: '',
     bookedFor: '',
     office: '',
-    bookingDate: '',
-    isShareable: true,
+    bookingDate: formatDate(new Date()),
+    isShareable: '',
     notes: ''
 };
 
@@ -51,6 +55,7 @@ const BookingFormModal: React.FC<BookingFormModalProps> = ({isOpen, onClose, onS
 
     const handleSubmit = (event: React.FormEvent): void => {
         event.preventDefault();
+        console.log(`form state at submit: ${JSON.stringify(formState)}`);
         onSubmit(formState);
         setFormState(initialBookingFormModalData);
     };
@@ -62,25 +67,27 @@ const BookingFormModal: React.FC<BookingFormModalProps> = ({isOpen, onClose, onS
             onClose={onClose}>
             <form onSubmit={handleSubmit} className={"Form"}>
                 <div className={"FormInputSection"}>
-                    <label className={"FormLabel"} htmlFor='Environment'>Environment: </label>
-                    <select className={"FormInput"} name='Environment' aria-describedby='Environment name'
-                            required={true} onChange={handleInputChange}>
+                    <label className={"FormLabel"} htmlFor='environmentName'>Environment: </label>
+                    <select id='environmentName' className='FormInput' name='environmentName' aria-describedby='Environment name'
+                            required={true} value={formState.environmentName} onChange={handleInputChange}>
                         <option id='TST1'>TST1</option>
                         <option id='TST2'>TST2</option>
                         <option id='TST3'>TST3</option>
                     </select>
                 </div>
                 <div className={"FormInputSection"}>
-                    <label className={"FormLabel"} htmlFor='Name'>Name: </label>
-                    <input className={"FormInput"} name='Name' aria-label='Name'
+                    <label className={"FormLabel"} htmlFor='bookedFor'>Name: </label>
+                    <input className={"FormInput"} name='bookedFor' aria-label='Name'
                            aria-describedby='Name of the person booking'
                            type='text'
+                           value={formState.bookedFor}
                            onChange={handleInputChange}/>
                 </div>
                 <div className={"FormInputSection"}>
-                    <label className={"FormLabel"} htmlFor='Office'>Office: </label>
-                    <select className={"FormInput"} name='Office'
+                    <label className={"FormLabel"} htmlFor='office'>Office: </label>
+                    <select className={"FormInput"} name='office'
                             aria-describedby='Office of the person making the booking'
+                            value={formState.office}
                             onChange={handleInputChange}>
                         <option id='LDN'>LDN</option>
                         <option id='VAN'>VAN</option>
@@ -88,23 +95,28 @@ const BookingFormModal: React.FC<BookingFormModalProps> = ({isOpen, onClose, onS
                     </select>
                 </div>
                 <div className={"FormInputSection"}>
-                    <label className={"FormLabel"} htmlFor='BookingDate'>Booking Date: </label>
-                    <input className={"FormInput"} name='BookingDate' aria-describedby='The date of the booking'
+                    <label className={"FormLabel"} htmlFor='bookingDate'>Booking Date: </label>
+                    <input className={"FormInput"} name='bookingDate' aria-describedby='The date of the booking'
                            type='date'
+                           value={formState.bookingDate}
                            onChange={handleInputChange}/>
                 </div>
                 <div className={"FormInputSection"}>
-                    <label className={"FormLabel"} htmlFor='Shareable'>Shareable? </label>
-                    <input className={"FormInput"} name='Shareable'
+                    <label className={"FormLabel"} htmlFor='isShareable'>Shareable? </label>
+                    <select className={"FormInput"} name='isShareable'
                            aria-describedby='Is this ennvironment shareable?'
-                           type='checkbox'
-                           onChange={handleInputChange}/>
+                           value={formState.isShareable}
+                           onChange={handleInputChange}>
+                            <option id='isShareable-Yes'>Yes</option>
+                            <option id='isShareable-No'>No</option>
+                    </select>
                 </div>
                 <div className={"FormInputSection"}>
-                    <label className={"FormLabel"} htmlFor='Notes'>Notes: </label>
-                    <textarea className={"FormInput"} name='Notes'
+                    <label className={"FormLabel"} htmlFor='notes'>Notes: </label>
+                    <textarea className={"FormInput"} name='notes'
                               aria-describedby='Description of anything that may be important to other people who want to use the environment'
                               cols={30} rows={5}
+                              value={formState.notes}
                               onChange={handleInputChange}/>
                 </div>
                 <div className={"FormButtonSection"}>

@@ -157,15 +157,15 @@ const App: React.FC = () => {
 
     const handleFormSubmit = (data: BookingFormModalData): void => {
         setBookingFormData(data);
-        console.log(`bookingFormData && bookingFormData.bookedFor: ${bookingFormData && bookingFormData.bookedFor}`);
+        console.log(`handleFormSubmit data: ${JSON.stringify(data)}`);
         handleCloseBookingFormModal();
     };
 
     return (
         <div className="App">
-            <header className="App-header">
+            <h1 className="App-header">
                 Book an environment!
-            </header>
+            </h1>
             <div id={"Messages"}>
                 {
                     bookingFormData &&
@@ -177,16 +177,16 @@ const App: React.FC = () => {
                     )
                 }
             </div>
+            <BookingFormModal
+                isOpen={isBookingFormModalOpen}
+                onSubmit={handleFormSubmit}
+                onClose={handleCloseBookingFormModal}/>
             <div className={"Content"}>
                 <menu className={"Menu"}>
                     <h3>Menu</h3>
                     <div className={"MenuSection"}>
                         <button id='open-booking-form' onClick={handleOpenBookingFormModal}>Book Environment</button>
                     </div>
-                    <BookingFormModal
-                        isOpen={isBookingFormModalOpen}
-                        onSubmit={handleFormSubmit}
-                        onClose={handleCloseBookingFormModal}/>
                 </menu>
                 <div className="EnvironmentTable">
                     {environmentTableComponent(rows)}
