@@ -1,6 +1,4 @@
-.EnvironmentTable {
-  justify-content: left;
-}
+.EnvironmentTable {}
 
 .Row {
   outline: darkblue 2px solid;
@@ -8,7 +6,10 @@
 
 .RowItem {
   outline: lightblue 1px solid;
-  gap: 1px;
+}
+
+.RowItemCenter {
+  text-align: center;
 }
 
 .Booked {

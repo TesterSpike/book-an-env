@@ -37,7 +37,7 @@ const EnvironmentTableRowComponent = (rows: EnvironmentData[]) => {
                                                                </Icon>}/>
                 </td>
                 <td className={"RowItem"}>
-                    <ul>{FrontendUrlComponent(row.metadata.frontendUrls)}</ul>
+                    {FrontendUrlComponent(row.metadata.frontendUrls)}
                 </td>
                 <td className={"RowItem"}><a
                     href={row.metadata.configManagerUrl.url}>{row.metadata.configManagerUrl.cmName}</a></td>
@@ -45,11 +45,11 @@ const EnvironmentTableRowComponent = (rows: EnvironmentData[]) => {
                 <td className={"RowItem"}>{(bookingData) ? new Date(bookingData.bookingDate).toLocaleDateString("en-uk") : ''}</td>
                 <td className={"RowItem"}>{(bookingData) ? bookingData.untilTime : ''}</td>
                 <td className={"RowItem"}>{(bookingData) ? bookingData.untilTime : ''}</td>
-                <td className={(bookingData) ? shareable : 'RowItem'}>{(bookingData) ? 'Yes' : ''}</td>
+                <td className={`RowItemCenter ${(bookingData) ? shareable : 'RowItem'}`}>{(bookingData) ? 'Yes' : ''}</td>
                 <td className={"RowItem"}>{(bookingData) ? bookingData.notes : ''}</td>
-                <td className={"RowItem"}>{(bookingData) ?
+                <td className={"RowItem RowItemCenter"}>{(bookingData) ?
                     <Button>Release</Button> :
-                    <button id='open-booking-form' onClick={handleOpenBookingFormModal}>Book</button>}</td>
+                    <Button id='open-booking-form' onClick={handleOpenBookingFormModal}>Book</Button>}</td>
                 <BookingFormModal
                     isOpen={isBookingFormModalOpen}
                     onSubmit={handleFormSubmit}
