@@ -14,7 +14,7 @@ const EnvironmentTableComponent = (rows: EnvironmentData[]) => (
             <th className={"RowItem"}>Available from (BST)</th>
             <th className={"RowItem"}>Shareable</th>
             <th className={"RowItem"}>Notes</th>
-            <th className={"RowItem"}>Remove booking</th>
+            <th className={"RowItem"}>Action</th>
         </tr>
         </thead>
         <tbody id="environmentStatusBody">

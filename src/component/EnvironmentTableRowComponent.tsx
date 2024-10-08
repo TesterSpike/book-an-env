@@ -1,8 +1,28 @@
 import {EnvironmentData} from "../types/environmentData";
 import FrontendUrlComponent from "./FrontendUrlComponent";
 import {Button, Icon, Popup} from 'semantic-ui-react'
+import React, {useState} from "react";
+import BookingFormModal, {BookingFormModalData} from "./BookingFormModal";
 
 const EnvironmentTableRowComponent = (rows: EnvironmentData[]) => {
+    const [isBookingFormModalOpen, setBookingFormModalOpen] = useState<boolean>(false);
+    const [bookingFormData, setBookingFormData] = useState<BookingFormModalData | null>(null);
+
+    const handleOpenBookingFormModal = () => {
+        setBookingFormModalOpen(true);
+    };
+
+    const handleCloseBookingFormModal = () => {
+        setBookingFormModalOpen(false);
+    };
+
+    const handleFormSubmit = (data: BookingFormModalData): void => {
+        setBookingFormData(data);
+        console.log(`handleFormSubmit data: ${JSON.stringify(data)}`);
+        handleCloseBookingFormModal();
+    };
+
+
     return rows.map((row) => {
         const bookingData = row.bookingData;
         const shareable = (row.bookingData?.shareable) ? 'Unlocked RowItem' : 'Locked RowItem';
@@ -27,7 +47,13 @@ const EnvironmentTableRowComponent = (rows: EnvironmentData[]) => {
                 <td className={"RowItem"}>{(bookingData) ? bookingData.untilTime : ''}</td>
                 <td className={(bookingData) ? shareable : 'RowItem'}>{(bookingData) ? 'Yes' : ''}</td>
                 <td className={"RowItem"}>{(bookingData) ? bookingData.notes : ''}</td>
-                <td className={"RowItem"}>{(bookingData) ? <Button>Release</Button> : ''}</td>
+                <td className={"RowItem"}>{(bookingData) ?
+                    <Button>Release</Button> :
+                    <button id='open-booking-form' onClick={handleOpenBookingFormModal}>Book</button>}</td>
+                <BookingFormModal
+                    isOpen={isBookingFormModalOpen}
+                    onSubmit={handleFormSubmit}
+                    onClose={handleCloseBookingFormModal}/>
             </tr>
         )
     });
