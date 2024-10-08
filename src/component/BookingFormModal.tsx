@@ -119,7 +119,7 @@ const BookingFormModal: React.FC<BookingFormModalProps> = ({isOpen, onClose, onS
                               value={formState.notes}
                               onChange={handleInputChange}/>
                 </div>
-                <div className={"FormButtonSection"}>
+                <div className={"FormInputSection"}>
                     <button type="submit" className={"FormButton"}>Book Environment</button>
                 </div>
             </form>

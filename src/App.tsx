@@ -1,4 +1,6 @@
 import './css/App.css';
+import './css/InfoTable.css';
+import './css/Modal.css'
 import {EnvironmentData} from "./types/environmentData";
 import environmentTableComponent from './component/EnvironmentTableComponent';
 import React, {useState} from "react";
@@ -164,7 +166,7 @@ const App: React.FC = () => {
     return (
         <div className="App">
             <h1 className="App-header">
-                Book an environment!
+                Environments
             </h1>
             <div id={"Messages"}>
                 {
@@ -182,14 +184,11 @@ const App: React.FC = () => {
                 onSubmit={handleFormSubmit}
                 onClose={handleCloseBookingFormModal}/>
             <div className={"Content"}>
-                <menu className={"Menu"}>
-                    <h3>Menu</h3>
-                    <div className={"MenuSection"}>
-                        <button id='open-booking-form' onClick={handleOpenBookingFormModal}>Book Environment</button>
-                    </div>
-                </menu>
                 <div className="EnvironmentTable">
                     {environmentTableComponent(rows)}
+                </div>
+                <div className={"Booking"}>
+                    <button id='open-booking-form' onClick={handleOpenBookingFormModal}>Book Environment</button>
                 </div>
             </div>
         </div>

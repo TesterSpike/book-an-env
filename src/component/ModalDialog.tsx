@@ -42,11 +42,13 @@ const ModalDialog: React.FC<ModalDialogProps> = ({isOpen, hasCloseBtn = true, on
 
     return (
         <dialog className= 'modal-dialog' ref={modalDialogRef} onKeyDown={handleKeyDown}>
+            <div className={'modal-header'}>
             {hasCloseBtn && (
                 <button className='modal-close-btn' onClick={handleCloseModal}>
                     Close
                 </button>
             )}
+            </div>
             {children}
         </dialog>
     );

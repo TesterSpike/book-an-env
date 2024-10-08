@@ -1,74 +1,28 @@
-.App {
+.App {}
+
+.App-header {
+  background-color: palevioletred;
   text-align: center;
 }
 
-.App-header {
-  background-color: lightcoral;
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+h1 {
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
-h1 {
+h3 {
   justify-content: center;
 }
 
 .Content {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: safe center;
   gap: 1rem;
 }
 
-.Menu {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-items: left;
-  background-color: aliceblue;
-}
+.Booking {
 
-.EnvironmentTable {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.Row {
-  outline: darkblue 2px solid;
-}
-
-.RowItem {
-  outline: lightblue 1px solid;
-  gap: 1px;
-}
-
-.Booked {
-  background-color: lightpink;
-}
-
-.Locked {
-  background-color: lightsalmon;
-}
-
-.Unlocked {
-  background-color: lightseagreen;
-}
-
-.PopupTrigger {
-  font-size: small;
-  vertical-align: super;
-  background-color: lightgrey;
-}
-
-.Popup {
-  background-color: lightgrey;
-  border: 1px solid grey;
-  padding: 1px 2px;
 }
 
 .msg-box {
@@ -80,35 +34,4 @@ h1 {
   border: 2px solid darkgreen;
   background: lightgreen;
   color: darkgreen;
-}
-
-.Form {
-  flex: fit-content;
-  display: flex;
-  flex-direction: column;
-  padding: 1em;
-  gap: 5px;
-  border: 1px solid darkseagreen;
-  background: lightseagreen;
-}
-
-.FormLabel {
-  align-self: flex-start;
-}
-
-.FormInput {
-  align-self: flex-start;
-}
-
-.FormButton {
-  align-self: center;
-}
-
-.modal-close-btn {
-  align-self: flex-end;
-}
-
-.modal-dialog[open] {
-  display: flex;
-  flex-direction: column;
 }

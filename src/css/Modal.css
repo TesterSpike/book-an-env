@@ -1,0 +1,30 @@
+.modal-dialog {
+  border: 1px solid seagreen;
+  background: mediumaquamarine;
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-close-btn {
+ align-self: flex-end;
+}
+
+.Form {
+  padding: 0 1em 0 1em;
+}
+
+.FormInputSection {
+  display: grid;
+}
+
+.FormLabel {
+}
+
+.FormInput {
+}
+
+.FormButton {
+}

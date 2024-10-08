@@ -1,0 +1,36 @@
+.EnvironmentTable {
+  justify-content: left;
+}
+
+.Row {
+  outline: darkblue 2px solid;
+}
+
+.RowItem {
+  outline: lightblue 1px solid;
+  gap: 1px;
+}
+
+.Booked {
+  background-color: lightpink;
+}
+
+.Locked {
+  background-color: lightsalmon;
+}
+
+.Unlocked {
+  background-color: lightseagreen;
+}
+
+.PopupTrigger {
+  font-size: small;
+  vertical-align: super;
+  background-color: lightgrey;
+}
+
+.Popup {
+  background-color: lightgrey;
+  border: 1px solid grey;
+  padding: 1px 2px;
+}
