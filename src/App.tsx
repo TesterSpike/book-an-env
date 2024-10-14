@@ -1,6 +1,4 @@
 import './css/App.css';
-import './css/InfoTable.css';
-import './css/Modal.css'
 import {EnvironmentData} from "./types/environmentData";
 import React from "react";
 import EnvironmentTableComponent from "./component/table/EnvironmentTableComponent";

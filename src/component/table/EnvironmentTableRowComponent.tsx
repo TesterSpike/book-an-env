@@ -4,7 +4,7 @@ import {Button, Icon, Popup} from 'semantic-ui-react'
 import React, {useState} from "react";
 import BookingFormModal, {BookingFormModalData} from "../modal/BookingFormModal";
 
-function EnvironmentTableRowComponent(row: EnvironmentData) {
+export default function EnvironmentTableRowComponent(row: EnvironmentData) {
     const [isBookingFormModalOpen, setBookingFormModalOpen] = useState<boolean>(false);
     const [bookingFormData, setBookingFormData] = useState<BookingFormModalData | null>(null);
 
@@ -55,5 +55,3 @@ function EnvironmentTableRowComponent(row: EnvironmentData) {
         </tr>
     );
 }
-
-export default EnvironmentTableRowComponent;

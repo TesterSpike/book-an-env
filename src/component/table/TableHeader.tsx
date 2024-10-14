@@ -1,4 +1,4 @@
-function TableHeader() {
+export default function TableHeader() {
     return (
         <thead>
         <tr className={"Row"}>
@@ -15,5 +15,3 @@ function TableHeader() {
         </tr>
         </thead>);
 }
-
-export default TableHeader;
