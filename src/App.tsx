@@ -2,8 +2,8 @@ import './css/App.css';
 import './css/InfoTable.css';
 import './css/Modal.css'
 import {EnvironmentData} from "./types/environmentData";
-import environmentTableComponent from './component/EnvironmentTableComponent';
 import React from "react";
+import EnvironmentTableComponent from "./component/table/EnvironmentTableComponent";
 
 const App: React.FC = () => {
     const rows: EnvironmentData[] = [
@@ -152,7 +152,7 @@ const App: React.FC = () => {
             </h1>
             <div className={"Content"}>
                 <div className="EnvironmentTable">
-                    {environmentTableComponent(rows)}
+                    <EnvironmentTableComponent rows={rows}/>
                 </div>
             </div>
         </div>

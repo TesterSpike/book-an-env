@@ -1,8 +1,5 @@
-import { EnvironmentData } from "../types/environmentData";
-import environmentStatusRowComponent from "./EnvironmentTableRowComponent";
-
-const EnvironmentTableComponent = (rows: EnvironmentData[]) => (
-    <table>
+function TableHeader() {
+    return (
         <thead>
         <tr className={"Row"}>
             <th className={"RowItem"}>Environment</th>
@@ -16,10 +13,7 @@ const EnvironmentTableComponent = (rows: EnvironmentData[]) => (
             <th className={"RowItem"}>Notes</th>
             <th className={"RowItem"}>Action</th>
         </tr>
-        </thead>
-        <tbody id="environmentStatusBody">
-        {environmentStatusRowComponent(rows)}
-        </tbody>
-    </table>
-);
-export default EnvironmentTableComponent;
+        </thead>);
+}
+
+export default TableHeader;
