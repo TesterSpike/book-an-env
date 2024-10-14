@@ -30,7 +30,7 @@ interface BookingFormModalProps {
     onClose: () => void;
 }
 
-const BookingFormModal: React.FC<BookingFormModalProps> = ({isOpen, onClose, onSubmit}) => {
+export default function BookingFormModal({isOpen, onClose, onSubmit}: BookingFormModalProps) {
     const focusInputRef = useRef<HTMLInputElement | null>(null);
 
     const [formState, setFormState] = useState<BookingFormModalData>(initialBookingFormModalData);
@@ -126,5 +126,3 @@ const BookingFormModal: React.FC<BookingFormModalProps> = ({isOpen, onClose, onS
         </ModalDialog>
     )
 }
-
-export default BookingFormModal;

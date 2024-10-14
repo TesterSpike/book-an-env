@@ -8,7 +8,7 @@ interface ModalDialogProps {
     children: React.ReactNode;
 }
 
-const ModalDialog: React.FC<ModalDialogProps> = ({isOpen, hasCloseBtn = true, onClose, children}) => {
+export default function ModalDialog({isOpen, hasCloseBtn = true, onClose, children}:ModalDialogProps) {
     const [isModalOpen, setModalOpen] = useState(isOpen);
     const modalDialogRef = useRef<HTMLDialogElement | null>(null);
 
@@ -54,5 +54,3 @@ const ModalDialog: React.FC<ModalDialogProps> = ({isOpen, hasCloseBtn = true, on
         </dialog>
     );
 }
-
-export default ModalDialog;
