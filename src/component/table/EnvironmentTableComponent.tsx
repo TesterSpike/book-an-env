@@ -1,13 +1,13 @@
+import '../../css/InfoTable.css';
 import {EnvironmentData} from "../../types/environmentData";
+import {BookingFormModalData} from '../modal/types/BookingFormModalData';
 import TableHeader from "./TableHeader";
 import EnvironmentTableRowComponent from "./EnvironmentTableRowComponent";
-import '../../css/InfoTable.css';
-import {BookingFormModalData} from "../modal/BookingFormModal";
 
 export default function EnvironmentTableComponent(props: {
     data: EnvironmentData[],
     onRelease: { (env: string): void; (arg0: string): void; },
-    onBooking: { (data: string): void; (arg0: string): void; },
+    onBooking: { (data: BookingFormModalData): void; (arg0: BookingFormModalData): void; },
 }) {
     return (
         <table>

@@ -1,8 +1,9 @@
 import {EnvironmentData} from "../../types/environmentData";
+import {BookingFormModalData} from '../modal/types/BookingFormModalData';
 import FrontendUrlComponent from "../FrontendUrlComponent";
 import {Button, Icon, Popup} from 'semantic-ui-react'
 import React, {useState} from "react";
-import BookingFormModal, {BookingFormModalData} from "../modal/BookingFormModal";
+import BookingFormModal from '../modal/BookingFormModal';
 
 export default function EnvironmentTableRowComponent(row: EnvironmentData,
                                                      onRelease: {
@@ -10,8 +11,8 @@ export default function EnvironmentTableRowComponent(row: EnvironmentData,
                                                          (arg0: string): void
                                                      },
                                                      onBooking: {
-                                                         (bookingData: string): void;
-                                                         (arg0: string): void
+                                                         (bookingData: BookingFormModalData): void;
+                                                         (arg0: BookingFormModalData): void
                                                      }) {
     const [isBookingFormModalOpen, setBookingFormModalOpen] = useState<boolean>(false);
 
@@ -24,8 +25,7 @@ export default function EnvironmentTableRowComponent(row: EnvironmentData,
     };
 
     const handleFormSubmit = (data: BookingFormModalData): void => {
-        onBooking(JSON.stringify(data));
-        console.log(`handleFormSubmit data: ${JSON.stringify(data)}`);
+        onBooking(data);
         handleCloseBookingFormModal();
     };
 
@@ -57,6 +57,7 @@ export default function EnvironmentTableRowComponent(row: EnvironmentData,
                 <Button id={`release-${row.env}-booking`} onClick={() => onRelease(row.env)}>Release</Button> :
                 <Button id={`open-${row.env}-booking-form`} onClick={handleOpenBookingFormModal}>Book</Button>}</td>
             <BookingFormModal
+                name={row.env}
                 isOpen={isBookingFormModalOpen}
                 onSubmit={handleFormSubmit}
                 onClose={handleCloseBookingFormModal}/>

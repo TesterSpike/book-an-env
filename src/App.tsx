@@ -2,6 +2,7 @@ import './css/App.css';
 import React, {useState} from "react";
 import EnvironmentTableComponent from "./component/table/EnvironmentTableComponent";
 import {EnvironmentData} from "./types/environmentData";
+import {BookingFormModalData} from './component/modal/types/BookingFormModalData';
 
 
 const rows: EnvironmentData[] = [
@@ -157,23 +158,20 @@ const App: React.FC = () => {
         setRowsData(updatedRows);
     }
 
-    function addBooking(data: string) {
-        //TODO the booking isn't working
+    function addBooking(data: BookingFormModalData) {
         const updatedRows: EnvironmentData[] = [];
-        const bookingData = JSON.parse(JSON.stringify(data));
         rowsData.forEach(row => {
-            if (row.env === bookingData.environmentName) {
+            if (row.env === data.environmentName) {
                 row.bookingData = {
-                    bookedBy: bookingData.bookedFor,
-                    bookingDate: bookingData.bookingDate,
-                    notes: bookingData.notes,
-                    shareable: bookingData.isShareable,
-                    untilTime: "6 pm " + bookingData.office
+                    bookedBy: data.bookedFor,
+                    bookingDate: data.bookingDate,
+                    notes: data.notes,
+                    shareable: data.isShareable,
+                    untilTime: "6 pm " + data.office
                 };
             }
             updatedRows.push(row);
         })
-        console.log(JSON.stringify(updatedRows));
         setRowsData(updatedRows);
     }
 
