@@ -20,6 +20,12 @@
   display: grid;
 }
 
+.FormText {
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+}
+
 .FormLabel {
 }
 

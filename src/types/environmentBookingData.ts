@@ -1,6 +1,6 @@
 export type EnvironmentBookingData = {
     bookedBy: string;
-    shareable: boolean;
+    shareable: string;
     notes: string;
     bookingDate: string;
     untilTime: string;

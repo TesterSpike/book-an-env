@@ -1,38 +1,20 @@
 import React, {useEffect, useRef, useState} from "react";
 import ModalDialog from "./ModalDialog";
-
-export interface BookingFormModalData {
-    environmentName: string;
-    bookedFor: string;
-    office: string;
-    bookingDate: string;
-    isShareable: string;
-    notes: string;
-}
-
-function formatDate(_date: Date): string {
-    return `${_date.getFullYear()}-${(_date.getMonth() + 1).toString().padStart(2, '0')}-${(_date.getDate()).toString().padStart(2, '0')}`
-}
+import {BookingFormModalData} from './types/BookingFormModalData';
+import {BookingFormModalProps} from './BookingFormModalProps';
+import {formatDateForDatabase} from '../../utils/dateHandling';
 
 const initialBookingFormModalData: BookingFormModalData = {
     environmentName: '',
     bookedFor: '',
-    office: '',
-    bookingDate: formatDate(new Date()),
-    isShareable: '',
+    office: 'LDN',
+    bookingDate: formatDateForDatabase(new Date()),
+    isShareable: 'No',
     notes: ''
 };
 
-
-interface BookingFormModalProps {
-    isOpen: boolean;
-    onSubmit: (data: BookingFormModalData) => void;
-    onClose: () => void;
-}
-
-export default function BookingFormModal({isOpen, onClose, onSubmit}: BookingFormModalProps) {
+export default function BookingFormModal({name, isOpen, onClose, onSubmit}: BookingFormModalProps) {
     const focusInputRef = useRef<HTMLInputElement | null>(null);
-
     const [formState, setFormState] = useState<BookingFormModalData>(initialBookingFormModalData);
 
     useEffect(() => {
@@ -55,9 +37,8 @@ export default function BookingFormModal({isOpen, onClose, onSubmit}: BookingFor
 
     const handleSubmit = (event: React.FormEvent): void => {
         event.preventDefault();
-        console.log(`form state at submit: ${JSON.stringify(formState)}`);
+        formState.environmentName = name;
         onSubmit(formState);
-        setFormState(initialBookingFormModalData);
     };
 
     return (
@@ -68,12 +49,7 @@ export default function BookingFormModal({isOpen, onClose, onSubmit}: BookingFor
             <form onSubmit={handleSubmit} className={"Form"}>
                 <div className={"FormInputSection"}>
                     <label className={"FormLabel"} htmlFor='environmentName'>Environment: </label>
-                    <select id='environmentName' className='FormInput' name='environmentName' aria-describedby='Environment name'
-                            required={true} value={formState.environmentName} onChange={handleInputChange}>
-                        <option id='TST1'>TST1</option>
-                        <option id='TST2'>TST2</option>
-                        <option id='TST3'>TST3</option>
-                    </select>
+                    <span className={"FormText"}>{name}</span>
                 </div>
                 <div className={"FormInputSection"}>
                     <label className={"FormLabel"} htmlFor='bookedFor'>Name: </label>

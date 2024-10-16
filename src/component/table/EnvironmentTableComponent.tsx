@@ -1,15 +1,19 @@
+import '../../css/InfoTable.css';
 import {EnvironmentData} from "../../types/environmentData";
+import {BookingFormModalData} from '../modal/types/BookingFormModalData';
 import TableHeader from "./TableHeader";
 import EnvironmentTableRowComponent from "./EnvironmentTableRowComponent";
-import '../../css/InfoTable.css';
 
-export default function EnvironmentTableComponent(props: { rows: EnvironmentData[]; }) {
-    const tableRows = props.rows.map(row => EnvironmentTableRowComponent(row));
+export default function EnvironmentTableComponent(props: {
+    data: EnvironmentData[],
+    onRelease: { (env: string): void; (arg0: string): void; },
+    onBooking: { (data: BookingFormModalData): void; (arg0: BookingFormModalData): void; },
+}) {
     return (
         <table>
             <TableHeader/>
             <tbody id="environmentStatusBody">
-            {tableRows}
+            {props.data.map((row: EnvironmentData) => EnvironmentTableRowComponent(row, props.onRelease, props.onBooking))}
             </tbody>
         </table>
     );
