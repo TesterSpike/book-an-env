@@ -1,5 +1,5 @@
-import '../../css/InfoTable.css';
-import {EnvironmentData} from "../../types/environmentData";
+import './css/InfoTable.css';
+import {EnvironmentData} from "./types/environmentData";
 import {BookingFormModalData} from '../modal/types/BookingFormModalData';
 import TableHeader from "./TableHeader";
 import EnvironmentTableRowComponent from "./EnvironmentTableRowComponent";

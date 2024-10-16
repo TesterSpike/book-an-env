@@ -1,6 +1,6 @@
-import {EnvironmentData} from "../../types/environmentData";
+import {EnvironmentData} from "./types/environmentData";
 import {BookingFormModalData} from '../modal/types/BookingFormModalData';
-import FrontendUrlComponent from "../FrontendUrlComponent";
+import FrontendUrlComponent from "./FrontendUrlComponent";
 import {Button, Icon, Popup} from 'semantic-ui-react'
 import React, {useState} from "react";
 import BookingFormModal from '../modal/BookingFormModal';

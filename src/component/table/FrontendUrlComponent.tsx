@@ -1,4 +1,4 @@
-import {FrontendUrl} from "../types/frontendUrl";
+import {FrontendUrl} from "./types/frontendUrl";
 
 export default function FrontendUrlComponent(frontendUrls: FrontendUrl[]) {
     return frontendUrls.map((frontEnd) => {

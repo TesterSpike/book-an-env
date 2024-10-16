@@ -1,7 +1,7 @@
-import './css/App.css';
+import './App.css';
 import React, {useState} from "react";
 import EnvironmentTableComponent from "./component/table/EnvironmentTableComponent";
-import {EnvironmentData} from "./types/environmentData";
+import {EnvironmentData} from "./component/table/types/environmentData";
 import {BookingFormModalData} from './component/modal/types/BookingFormModalData';
 
 
