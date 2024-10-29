@@ -26,10 +26,11 @@ const App: React.FC = () => {
             if (row.env === data.environmentName) {
                 row.bookingData = {
                     bookedBy: data.bookedFor,
+                    office: data.office,
                     bookingDate: data.bookingDate,
                     notes: data.notes,
                     shareable: data.isShareable,
-                    untilTime: "6 pm " + data.office
+                    untilTime: new Date(data.bookingDate + " 6:00:00"),
                 };
             }
             updatedRows.push(row);
