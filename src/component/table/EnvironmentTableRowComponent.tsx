@@ -4,7 +4,6 @@ import FrontendUrlComponent from "./FrontendUrlComponent";
 import {Button, Icon, Popup} from 'semantic-ui-react'
 import React, {useState} from "react";
 import BookingFormModal from '../modal/BookingFormModal';
-import {convertTimeTo} from "../../utils/dateHandling";
 
 export default function EnvironmentTableRowComponent(row: EnvironmentData,
                                                      onRelease: {
@@ -53,14 +52,11 @@ export default function EnvironmentTableRowComponent(row: EnvironmentData,
             <td className={"RowItem"} aria-label="person who booked">
                 {(bookingData) ? bookingData.bookedBy : ''}
             </td>
-            <td className={"RowItem"} aria-label="booking date">
-                {(bookingData) ? new Date(bookingData.bookingDate).toLocaleDateString("en-uk") : ''}
+            <td className={"RowItem"} aria-label="person's office">
+                {(bookingData) ? bookingData.office : ''}
             </td>
             <td className={"RowItem"} aria-label="booked until time">
-                {(bookingData) ? convertTimeTo(bookingData.untilTime, bookingData.office) : ''}
-            </td>
-            <td className={"RowItem"} aria-label="booked until time">
-                {(bookingData) ? bookingData.untilTime.toLocaleDateString() : ''}
+                {(bookingData) ? bookingData.untilTime.toLocaleString() : ''}
             </td>
             <td className={`RowItemCenter ${(bookingData) ? shareable : 'RowItem'}`} aria-label="can it be shared">
                 {(bookingData) ? bookingData.shareable : ''}

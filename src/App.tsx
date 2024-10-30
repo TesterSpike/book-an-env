@@ -30,9 +30,10 @@ const App: React.FC = () => {
                     bookingDate: data.bookingDate,
                     notes: data.notes,
                     shareable: data.isShareable,
-                    untilTime: new Date(data.bookingDate + " 6:00:00"),
+                    untilTime: new Date(data.bookingDate + " 18:00:00"),
                 };
             }
+            console.log(`updated rows: ${JSON.stringify(updatedRows)}`);
             updatedRows.push(row);
         })
         setRowsData(updatedRows);
