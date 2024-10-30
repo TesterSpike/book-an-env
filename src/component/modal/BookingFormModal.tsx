@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import ModalDialog from "./ModalDialog";
 import {BookingFormModalData} from './types/BookingFormModalData';
-import {BookingFormModalProps} from './BookingFormModalProps';
+import {BookingFormModalProps} from './types/BookingFormModalProps';
 import {formatDateForDatabase} from '../../utils/dateHandling';
 
 const initialBookingFormModalData: BookingFormModalData = {
@@ -13,17 +13,17 @@ const initialBookingFormModalData: BookingFormModalData = {
     notes: ''
 };
 
-export default function BookingFormModal({name, isOpen, onClose, onSubmit}: BookingFormModalProps) {
+export default function BookingFormModal(props: BookingFormModalProps) {
     const focusInputRef = useRef<HTMLInputElement | null>(null);
     const [formState, setFormState] = useState<BookingFormModalData>(initialBookingFormModalData);
 
     useEffect(() => {
-        if (isOpen && focusInputRef.current) {
+        if (props.isOpen && focusInputRef.current) {
             setTimeout(() => {
                 focusInputRef.current!.focus();
             }, 0);
         }
-    }, [isOpen]);
+    }, [props.isOpen]);
 
     const handleInputChange = (
         event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -37,19 +37,19 @@ export default function BookingFormModal({name, isOpen, onClose, onSubmit}: Book
 
     const handleSubmit = (event: React.FormEvent): void => {
         event.preventDefault();
-        formState.environmentName = name;
-        onSubmit(formState);
+        formState.environmentName =props.name;
+        props.onSubmit(formState);
     };
 
     return (
         <ModalDialog
             hasCloseBtn={true}
-            isOpen={isOpen}
-            onClose={onClose}>
+            isOpen={props.isOpen}
+            onClose={props.onClose}>
             <form onSubmit={handleSubmit} className={"Form"}>
                 <div className={"FormInputSection"}>
                     <label className={"FormLabel"} htmlFor='environmentName'>Environment: </label>
-                    <span className={"FormText"}>{name}</span>
+                    <span className={"FormText"}>{props.name}</span>
                 </div>
                 <div className={"FormInputSection"}>
                     <label className={"FormLabel"} htmlFor='bookedFor'>Name: </label>

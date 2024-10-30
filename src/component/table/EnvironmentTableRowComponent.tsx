@@ -1,19 +1,12 @@
-import {EnvironmentData} from "./types/environmentData";
 import {BookingFormModalData} from '../modal/types/BookingFormModalData';
-import FrontendUrlComponent from "./FrontendUrlComponent";
 import {Button, Icon, Popup} from 'semantic-ui-react'
 import React, {useState} from "react";
 import BookingFormModal from '../modal/BookingFormModal';
+import {EnvironmentRowProps} from "./types/EnvironmentRowProps";
 
-export default function EnvironmentTableRowComponent(row: EnvironmentData,
-                                                     onRelease: {
-                                                         (env: string): void;
-                                                         (arg0: string): void
-                                                     },
-                                                     onBooking: {
-                                                         (bookingData: BookingFormModalData): void;
-                                                         (arg0: BookingFormModalData): void
-                                                     }) {
+export default function EnvironmentTableRowComponent(props: EnvironmentRowProps) {
+    const row = props.row;
+
     const [isBookingFormModalOpen, setBookingFormModalOpen] = useState<boolean>(false);
 
     const handleOpenBookingFormModal = () => {
@@ -25,7 +18,7 @@ export default function EnvironmentTableRowComponent(row: EnvironmentData,
     };
 
     const handleFormSubmit = (data: BookingFormModalData): void => {
-        onBooking(data);
+        props.onBooking(data);
         handleCloseBookingFormModal();
     };
 
@@ -44,7 +37,13 @@ export default function EnvironmentTableRowComponent(row: EnvironmentData,
                            </Icon>}/>
             </td>
             <td className={"RowItem"} aria-label="fronted urls">
-                {FrontendUrlComponent(row.metadata.frontendUrls)}
+                <div>
+                    {
+                        row.metadata.frontendUrls.map((frontEnd) => {
+                            return <div><a key={frontEnd.feName} href={frontEnd.url}>{frontEnd.feName}</a></div>
+                        })
+                    }
+                </div>
             </td>
             <td className={"RowItem"} aria-label="config manager url">
                 <a href={row.metadata.configManagerUrl.url}>{row.metadata.configManagerUrl.cmName}</a>
@@ -66,7 +65,8 @@ export default function EnvironmentTableRowComponent(row: EnvironmentData,
             </td>
             <td className={"RowItem RowItemCenter"} aria-label={(bookingData) ? 'release button' : 'booking button'}>
                 {(bookingData) ?
-                    <Button id={`release-${row.env}-booking`} onClick={() => onRelease(row.env)}>Release</Button> :
+                    <Button id={`release-${row.env}-booking`}
+                            onClick={() => props.onRelease(row.env)}>Release</Button> :
                     <Button id={`open-${row.env}-booking-form`} onClick={handleOpenBookingFormModal}>Book</Button>}
             </td>
             <BookingFormModal

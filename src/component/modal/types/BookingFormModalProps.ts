@@ -1,4 +1,4 @@
-import {BookingFormModalData} from './types/BookingFormModalData';
+import {BookingFormModalData} from './BookingFormModalData';
 
 export interface BookingFormModalProps {
   name: string;
