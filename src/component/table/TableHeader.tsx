@@ -1,4 +1,6 @@
-export default function TableHeader() {
+import React from "react";
+
+export const TableHeader: React.FC = () => {
     return (
         <thead>
         <tr className={"Row"}>

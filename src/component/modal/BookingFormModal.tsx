@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import ModalDialog from "./ModalDialog";
+import {ModalDialog} from "./ModalDialog";
 import {BookingFormModalData} from './types/BookingFormModalData';
 import {BookingFormModalProps} from './types/BookingFormModalProps';
 import {formatDateForDatabase} from '../../utils/dateHandling';
@@ -7,13 +7,13 @@ import {formatDateForDatabase} from '../../utils/dateHandling';
 const initialBookingFormModalData: BookingFormModalData = {
     environmentName: '',
     bookedFor: '',
-    office: 'LDN',
+    office: 'VAN',
     bookingDate: formatDateForDatabase(new Date()),
     isShareable: 'No',
     notes: ''
 };
 
-export default function BookingFormModal(props: BookingFormModalProps) {
+export const BookingFormModal: React.FC<BookingFormModalProps> = (props) => {
     const focusInputRef = useRef<HTMLInputElement | null>(null);
     const [formState, setFormState] = useState<BookingFormModalData>(initialBookingFormModalData);
 

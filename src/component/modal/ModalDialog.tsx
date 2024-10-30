@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import './css/Modal.css'
 import {ModalDialogProps} from "./types/ModalDialogProps";
 
-export default function ModalDialog(props:ModalDialogProps) {
+export const ModalDialog: React.FC<ModalDialogProps> = (props)=> {
     const [isModalOpen, setModalOpen] = useState(props.isOpen);
     const modalDialogRef = useRef<HTMLDialogElement | null>(null);
 

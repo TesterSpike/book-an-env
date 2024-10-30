@@ -1,10 +1,11 @@
 import './css/InfoTable.css';
 import {EnvironmentData} from "./types/environmentData";
-import TableHeader from "./TableHeader";
-import EnvironmentTableRowComponent from "./EnvironmentTableRowComponent";
+import {TableHeader} from "./TableHeader";
+import {EnvironmentTableRowComponent} from "./EnvironmentTableRowComponent";
 import {EnvironmentTableProps} from "./types/EnvironmentTableProps";
+import React from "react";
 
-export default function EnvironmentTableComponent(props: EnvironmentTableProps) {
+export const EnvironmentTableComponent: React.FC<EnvironmentTableProps> = (props)=> {
     return (
         <table>
             <TableHeader/>

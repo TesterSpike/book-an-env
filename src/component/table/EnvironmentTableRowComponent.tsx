@@ -1,10 +1,10 @@
 import {BookingFormModalData} from '../modal/types/BookingFormModalData';
 import {Button, Icon, Popup} from 'semantic-ui-react'
 import React, {useState} from "react";
-import BookingFormModal from '../modal/BookingFormModal';
+import {BookingFormModal} from '../modal/BookingFormModal';
 import {EnvironmentRowProps} from "./types/EnvironmentRowProps";
 
-export default function EnvironmentTableRowComponent(props: EnvironmentRowProps) {
+export const EnvironmentTableRowComponent: React.FC<EnvironmentRowProps> = (props) => {
     const row = props.row;
 
     const [isBookingFormModalOpen, setBookingFormModalOpen] = useState<boolean>(false);
