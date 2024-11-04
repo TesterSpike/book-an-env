@@ -33,7 +33,6 @@ const App: React.FC = () => {
                     untilTime: new Date(data.bookingDate + " 18:00:00"),
                 };
             }
-            console.log(`updated rows: ${JSON.stringify(updatedRows)}`);
             updatedRows.push(row);
         })
         setRowsData(updatedRows);

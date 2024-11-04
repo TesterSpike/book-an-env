@@ -40,7 +40,7 @@ export const EnvironmentTableRowComponent: React.FC<EnvironmentRowProps> = (prop
                 <div>
                     {
                         row.metadata.frontendUrls.map((frontEnd) => {
-                            return <div><a key={frontEnd.feName} href={frontEnd.url}>{frontEnd.feName}</a></div>
+                            return <div key={frontEnd.feName}><a href={frontEnd.url}>{frontEnd.feName}</a></div>
                         })
                     }
                 </div>
