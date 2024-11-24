@@ -71,6 +71,10 @@
     "env": "TST5",
     "detail": "Some random text",
     "metadata": {
+      "lock": {
+        "lockState": "locked",
+        "lockNotes": "Temporarily locked for LLM testing"
+      },
       "frontendUrls": [
         {
           "feName": "FE1",
