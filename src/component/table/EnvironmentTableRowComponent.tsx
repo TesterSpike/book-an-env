@@ -1,79 +1,52 @@
-import {BookingFormModalData} from '../modal/types/BookingFormModalData';
-import {Button, Icon, Popup} from 'semantic-ui-react'
-import React, {useState} from "react";
-import {BookingFormModal} from '../modal/BookingFormModal';
+import React from "react";
 import {EnvironmentRowProps} from "./types/EnvironmentRowProps";
+import {InfoPopup} from "../info/InfoPopup";
 
 export const EnvironmentTableRowComponent: React.FC<EnvironmentRowProps> = (props) => {
     const row = props.row;
-
-    const [isBookingFormModalOpen, setBookingFormModalOpen] = useState<boolean>(false);
-
-    const handleOpenBookingFormModal = () => {
-        setBookingFormModalOpen(true);
-    };
-
-    const handleCloseBookingFormModal = () => {
-        setBookingFormModalOpen(false);
-    };
-
-    const handleFormSubmit = (data: BookingFormModalData): void => {
-        props.onBooking(data);
-        handleCloseBookingFormModal();
-    };
 
     const bookingData = row.bookingData;
     const shareable = (row.bookingData?.shareable === 'Yes') ? 'Unlocked RowItem' : 'Locked RowItem';
     const booked = (bookingData) ? 'Booked Row' : 'Row'
 
     return (
-        <tr className={booked} key={row.env}>
-            <td className={"RowItem"} aria-label="environment name">{row.env}
-                <Popup className={"Popup"}
-                       content={row.detail}
-                       trigger={
-                           <Icon id={`help-${row.env}`} className={'PopupTrigger'} name={'help'}>
-                               {(row.detail !== '') ? '?' : ''}
-                           </Icon>}/>
+        <tr className={booked} key={row.env} role={'row'}>
+            <td className={"RowItem"} aria-label="environment name" role={'cell'}>
+                {row.env}
+                {(row.detail) ? <InfoPopup infoText={row.detail} infoIcon={'?'}/> : null}
             </td>
-            <td className={"RowItem"} aria-label="fronted urls">
+            <td className={"RowItem"} aria-label="fronted urls" role={'cell'}>
                 <div>
                     {
                         row.metadata.frontendUrls.map((frontEnd) => {
-                            return <div><a key={frontEnd.feName} href={frontEnd.url}>{frontEnd.feName}</a></div>
+                            return <div key={frontEnd.feName}><a href={frontEnd.url}>{frontEnd.feName}</a></div>
                         })
                     }
                 </div>
             </td>
-            <td className={"RowItem"} aria-label="config manager url">
+            <td className={"RowItem"} aria-label="config manager url" role={'cell'}>
                 <a href={row.metadata.configManagerUrl.url}>{row.metadata.configManagerUrl.cmName}</a>
             </td>
-            <td className={"RowItem"} aria-label="person who booked">
+            <td className={"RowItem"} aria-label="person who booked" role={'cell'}>
                 {(bookingData) ? bookingData.bookedBy : ''}
             </td>
-            <td className={"RowItem"} aria-label="person's office">
+            <td className={"RowItem"} aria-label="person's office" role={'cell'}>
                 {(bookingData) ? bookingData.office : ''}
             </td>
-            <td className={"RowItem"} aria-label="booked until time">
+            <td className={"RowItem"} aria-label="booked until time" role={'cell'}>
                 {(bookingData) ? bookingData.untilTime.toLocaleString() : ''}
             </td>
-            <td className={`RowItemCenter ${(bookingData) ? shareable : 'RowItem'}`} aria-label="can it be shared">
+            <td className={`RowItemCenter ${(bookingData) ? shareable : 'RowItem'}`} aria-label="can it be shared" role={'cell'}>
                 {(bookingData) ? bookingData.shareable : ''}
             </td>
-            <td className={"RowItem"} aria-label="relevant notes">
+            <td className={"RowItem"} aria-label="relevant notes" role={'cell'}>
                 {(bookingData) ? bookingData.notes : ''}
             </td>
-            <td className={"RowItem RowItemCenter"} aria-label={(bookingData) ? 'release button' : 'booking button'}>
+            <td className={"RowItem RowItemCenter"} aria-label={(bookingData) ? 'release button' : 'booking button'} role={'cell'}>
                 {(bookingData) ?
-                    <Button id={`release-${row.env}-booking`}
-                            onClick={() => props.onRelease(row.env)}>Release</Button> :
-                    <Button id={`open-${row.env}-booking-form`} onClick={handleOpenBookingFormModal}>Book</Button>}
+                    <button id={`release-${row.env}-booking`} onClick={() => props.onRelease(row.env)}>Release</button> :
+                    <button id={`open-${row.env}-booking-form`} onClick={() => props.onBooking(row.env)}>Book</button>}
             </td>
-            <BookingFormModal
-                name={row.env}
-                isOpen={isBookingFormModalOpen}
-                onSubmit={handleFormSubmit}
-                onClose={handleCloseBookingFormModal}/>
         </tr>
     );
 }

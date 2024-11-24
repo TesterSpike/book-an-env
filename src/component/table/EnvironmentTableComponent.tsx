@@ -12,7 +12,7 @@ export const EnvironmentTableComponent: React.FC<EnvironmentTableProps> = (props
             <tbody id="environmentStatusBody">
             {
                 props.data.map((row: EnvironmentData) =>
-                    <EnvironmentTableRowComponent row={row} onRelease={props.onRelease} onBooking={props.onBooking}/>)
+                    <EnvironmentTableRowComponent key={row.env} row={row} onRelease={props.onRelease} onBooking={props.onBooking}/>)
             }
             </tbody>
         </table>

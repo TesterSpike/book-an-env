@@ -4,10 +4,13 @@ import {EnvironmentTableComponent} from "./component/table/EnvironmentTableCompo
 import {EnvironmentData} from "./component/table/types/environmentData";
 import {BookingFormModalData} from './component/modal/types/BookingFormModalData';
 import Rows from './resources/dataFile.json'
+import {BookingFormModal} from "./component/modal/BookingFormModal";
 
 const App: React.FC = () => {
     const rows = Rows as EnvironmentData[]
     const [rowsData, setRowsData] = useState(rows);
+    const [isBookingFormModalOpen, setBookingFormModalOpen] = useState<boolean>(false);
+    const [bookingEnv, setBookingEnv] = useState<string>("");
 
     function releaseBooking(env: string) {
         const updatedRows: EnvironmentData[] = [];
@@ -39,6 +42,20 @@ const App: React.FC = () => {
         setRowsData(updatedRows);
     }
 
+    const handleOpenBookingFormModal = (env: string) => {
+        setBookingFormModalOpen(true);
+        setBookingEnv(env);
+    };
+
+    const handleCloseBookingFormModal = () => {
+        setBookingFormModalOpen(false);
+    };
+
+    const handleFormSubmit = (data: BookingFormModalData): void => {
+        addBooking(data);
+        handleCloseBookingFormModal();
+    };
+
     return (
         <div className="App">
             <h1 className="App-header">
@@ -48,8 +65,13 @@ const App: React.FC = () => {
                 <div className="EnvironmentTable">
                     <EnvironmentTableComponent data={rows}
                                                onRelease={releaseBooking}
-                                               onBooking={addBooking}/>
+                                               onBooking={handleOpenBookingFormModal}/>
                 </div>
+                <BookingFormModal
+                    name={bookingEnv}
+                    isOpen={isBookingFormModalOpen}
+                    onSubmit={handleFormSubmit}
+                    onClose={handleCloseBookingFormModal}/>
             </div>
         </div>
     );
