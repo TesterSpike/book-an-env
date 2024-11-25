@@ -6,8 +6,12 @@ import {BookingFormModalData} from './component/modal/types/BookingFormModalData
 import Rows from './resources/dataFile.json'
 import {BookingFormModal} from "./component/modal/BookingFormModal";
 
+//a different way to declare rows would be to infer the type
+//Zod or Yup can be used to create a schema that can valdiate the data passed to it.
+//Useful in dynamic forms and getting data from api calls
+
 const App: React.FC = () => {
-    const rows = Rows as EnvironmentData[]
+    const rows:EnvironmentData[] = Rows
     const [rowsData, setRowsData] = useState(rows);
     const [isBookingFormModalOpen, setBookingFormModalOpen] = useState<boolean>(false);
     const [bookingEnv, setBookingEnv] = useState<string>("");
